@@ -1,0 +1,53 @@
+#Exercícios Banco de Dados
+
+Exercício 1. 
+CREATE TABLE alunos(id primary key, nome VARCHAR(100), idade INT(3), curso VARCHAR(50));
+
+Exercício 2. 
+INSERT INTO alunos (id, nome, idade, curso) VALUES (1, 'Letícia', 28, 'Engenharia');
+INSERT INTO alunos (id, nome, idade, curso) VALUES (2, 'José', 28, 'Engenharia');
+INSERT INTO alunos (id, nome, idade, curso) VALUES (3, 'Patrícia', 32, 'Medicina');
+INSERT INTO alunos (id, nome, idade, curso) VALUES (4, 'Luzia', 61, 'Pedagogia');
+INSERT INTO alunos (id, nome, idade, curso) VALUES (5, 'Evandro', 57, 'Contabilidade');
+INSERT INTO alunos (id, nome, idade, curso) VALUES (6, 'Teste', 109, 'Desempregado');
+
+
+Exercício 3. 
+a) SELECT * FROM alunos
+b) SELECT nome, idade FROM alunos where idade > 20
+b) SELECT * FROM alunos where curso = 'Engenharia' order by nome asc
+D)SELECT COUNT(*) FROM alunos
+
+Exercício 4.
+a)UPDATE alunos set idade = 29 where nome = 'Letícia'
+b)DELETE FROM alunos where id = 6
+
+Exercício 5.
+CREATE TABLE clientes (id primary key, nome VARCHAR(100), idade INT, saldo FLOAT)
+INSERT INTO clientes (id, nome, idade, saldo) VALUES (1, 'Roberta', 27, 500.00)
+INSERT INTO clientes (id, nome, idade, saldo) VALUES (2, 'Carlos', 49, 45.00)
+INSERT INTO clientes (id, nome, idade, saldo) VALUES (3, 'Carla', 22, 2.00)
+
+Exercício 6.
+a) SELECT nome, idade FROM clientes where idade > 30
+b) SELECT AVG(saldo) as saldo FROM clientes
+c) SELECT nome, saldo FROM clientes ORDER BY saldo desc LIMIT 1
+d) SELECT COUNT(*) FROM clientes WHERE saldo > 1000
+
+Exercício 7.
+a) UPDATE clientes set saldo = 1500.00 where id = 1
+b) DELETE  FROM clientes where id = 3
+
+Exercício 8.
+CREATE TABLE compras (id primary key, cliente_id INT, produto VARCHAR (50), valor REAL, CONSTRAINT fk_cliente_id foreign key (cliente_id) references clientes(id))
+
+INSERT INTO compras (id, cliente_id, produto, valor) VALUES (1, 2, 'Celular', 2000)
+INSERT INTO compras (id, cliente_id, produto, valor) VALUES (2, 2, 'Notebook', 5000)
+INSERT INTO compras (id, cliente_id, produto, valor) VALUES (3, 1, 'Teclado', 200)
+INSERT INTO compras (id, cliente_id, produto, valor) VALUES (4, 2, 'Teclado', 200)
+
+SELECT
+CS.nome, CP.produto, CP.valor
+FROM compras as CP
+JOIN clientes as CS ON CP.cliente_id = CS.id
+
