@@ -1,3 +1,3 @@
-##Exercícios Banco de Dados
+## Exercícios Banco de Dados
 
-#Exercícios referentes à aula de Banco de dados
+# Exercícios referentes à aula de Banco de dados
